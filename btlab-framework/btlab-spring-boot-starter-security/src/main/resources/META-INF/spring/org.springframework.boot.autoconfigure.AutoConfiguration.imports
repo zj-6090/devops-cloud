@@ -1,0 +1,5 @@
+com.btlab.devops.framework.security.config.BtlabSecurityRpcAutoConfiguration
+com.btlab.devops.framework.security.config.BtlabSecurityAutoConfiguration
+com.btlab.devops.framework.security.config.BtlabWebSecurityConfigurerAdapter
+com.btlab.devops.framework.operatelog.config.BtlabOperateLogConfiguration
+com.btlab.devops.framework.operatelog.config.BtlabOperateLogRpcAutoConfiguration

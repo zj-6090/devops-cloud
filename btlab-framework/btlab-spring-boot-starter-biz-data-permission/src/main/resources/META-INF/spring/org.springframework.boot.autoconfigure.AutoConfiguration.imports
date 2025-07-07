@@ -1,0 +1,3 @@
+com.btlab.devops.framework.datapermission.config.BtlabDataPermissionAutoConfiguration
+com.btlab.devops.framework.datapermission.config.BtlabDeptDataPermissionAutoConfiguration
+com.btlab.devops.framework.datapermission.config.BtlabDataPermissionRpcAutoConfiguration

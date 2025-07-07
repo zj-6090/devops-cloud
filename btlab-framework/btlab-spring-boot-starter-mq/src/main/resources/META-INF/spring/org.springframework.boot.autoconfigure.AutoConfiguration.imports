@@ -1,0 +1,3 @@
+com.btlab.devops.framework.mq.redis.config.BtlabRedisMQProducerAutoConfiguration
+com.btlab.devops.framework.mq.redis.config.BtlabRedisMQConsumerAutoConfiguration
+com.btlab.devops.framework.mq.rabbitmq.config.BtlabRabbitMQAutoConfiguration
