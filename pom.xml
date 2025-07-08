@@ -16,7 +16,8 @@
         <!--  各种 module 拓展 -->
         <module>btlab-module-system</module>
         <module>btlab-module-infra</module>
-<!--        <module>btlab-module-member</module>-->
+        <module>btlab-module-ids</module>
+        <!--        <module>btlab-module-member</module>-->
 <!--        <module>btlab-module-bpm</module>-->
 <!--        <module>btlab-module-pay</module>-->
 <!--        <module>btlab-module-report</module>-->
