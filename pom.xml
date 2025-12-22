@@ -3,30 +3,28 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.btlab.devops</groupId>
-    <artifactId>btlab</artifactId>
+    <groupId>com.bethlabs</groupId>
+    <artifactId>bethlabs</artifactId>
     <version>${revision}</version>
     <packaging>pom</packaging>
     <modules>
-        <module>btlab-dependencies</module>
-        <module>btlab-gateway</module>
-        <module>btlab-framework</module>
+        <module>bethlabs-dependencies</module>
+        <module>bethlabs-framework</module>
         <!-- Server 主项目 -->
-        <module>btlab-server</module>
-        <!--  各种 module 拓展 -->
-        <module>btlab-module-system</module>
-        <module>btlab-module-infra</module>
-<!--        <module>btlab-module-member</module>-->
-<!--        <module>btlab-module-bpm</module>-->
-<!--        <module>btlab-module-pay</module>-->
-<!--        <module>btlab-module-report</module>-->
-<!--        <module>btlab-module-mp</module>-->
-<!--        <module>btlab-module-mall</module>-->
-<!--        <module>btlab-module-erp</module>-->
-<!--        <module>btlab-module-crm</module>-->
-        <!-- 友情提示：基于 Spring AI 实现 LLM 大模型的接入，需要使用 JDK17 版本，详细可见 https://doc.iocoder.cn/ai/build/ -->
-<!--        <module>btlab-module-ai</module>-->
-<!--        <module>btlab-module-iot</module>-->
+        <module>bethlabs-server</module>
+        <!-- 各种 module 拓展 -->
+        <module>bethlabs-module-system</module>
+        <module>bethlabs-module-infra</module>
+<!--        <module>bethlabs-module-member</module>-->
+<!--        <module>bethlabs-module-bpm</module>-->
+<!--        <module>bethlabs-module-report</module>-->
+<!--        <module>bethlabs-module-mp</module>-->
+<!--        <module>bethlabs-module-pay</module>-->
+<!--        <module>bethlabs-module-mall</module>-->
+<!--        <module>bethlabs-module-crm</module>-->
+<!--        <module>bethlabs-module-erp</module>-->
+<!--        <module>bethlabs-module-ai</module>-->
+<!--        <module>bethlabs-module-iot</module>-->
     </modules>
 
     <name>${project.artifactId}</name>
@@ -34,17 +32,17 @@
     <url>https://github.com/YunaiV/ruoyi-vue-pro</url>
 
     <properties>
-        <revision>2.6.0-jdk8-SNAPSHOT</revision>
+        <revision>2.6.1-SNAPSHOT</revision>
         <!-- Maven 相关 -->
-        <java.version>1.8</java.version>
+        <java.version>17</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven-surefire-plugin.version>3.2.2</maven-surefire-plugin.version>
         <maven-compiler-plugin.version>3.14.0</maven-compiler-plugin.version>
         <flatten-maven-plugin.version>1.6.0</flatten-maven-plugin.version>
-        <!-- 看看咋放到 bom 里 -->
-        <lombok.version>1.18.36</lombok.version>
-        <spring.boot.version>2.7.18</spring.boot.version>
+        <!-- maven-surefire-plugin 暂时无法通过 bom 的依赖读取（兼容老版本 IDEA 2024 及以前版本） -->
+        <lombok.version>1.18.38</lombok.version>
+        <spring.boot.version>3.4.5</spring.boot.version>
         <mapstruct.version>1.6.3</mapstruct.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
@@ -52,8 +50,8 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>com.btlab.devops</groupId>
-                <artifactId>btlab-dependencies</artifactId>
+                <groupId>com.bethlabs</groupId>
+                <artifactId>bethlabs-dependencies</artifactId>
                 <version>${revision}</version>
                 <type>pom</type>
                 <scope>import</scope>
@@ -71,7 +69,7 @@
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>${maven-surefire-plugin.version}</version>
                 </plugin>
-                <!-- maven-compiler-plugin 插件，解决 Lombok + MapStruct 组合 -->
+                <!-- maven-compiler-plugin 插件，解决 spring-boot-configuration-processor + Lombok + MapStruct 组合 -->
                 <!-- https://stackoverflow.com/questions/33483697/re-run-spring-boot-configuration-annotation-processor-to-update-generated-metada -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -90,12 +88,28 @@
                                 <version>${lombok.version}</version>
                             </path>
                             <path>
+                                <!-- 确保 Lombok 生成的 getter/setter 方法能被 MapStruct 正确识别，
+                                     避免出现 No property named “xxx" exists 的编译错误 -->
+                                <groupId>org.projectlombok</groupId>
+                                <artifactId>lombok-mapstruct-binding</artifactId>
+                                <version>0.2.0</version>
+                            </path>
+                            <path>
                                 <groupId>org.mapstruct</groupId>
                                 <artifactId>mapstruct-processor</artifactId>
                                 <version>${mapstruct.version}</version>
                             </path>
                         </annotationProcessorPaths>
+                        <!-- 编译参数写在 arg 内，解决 Spring Boot 3.2 的 Parameter Name Discovery 问题 -->
+                        <debug>false</debug>
+                        <compilerArgs>
+                            <arg>-parameters</arg>
+                        </compilerArgs>
                     </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>flatten-maven-plugin</artifactId>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -141,6 +155,23 @@
             <id>aliyunmaven</id>
             <name>aliyun</name>
             <url>https://maven.aliyun.com/repository/public</url>
+        </repository>
+
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>spring-snapshots</id>
+            <name>Spring Snapshots</name>
+            <url>https://repo.spring.io/snapshot</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
         </repository>
     </repositories>
 

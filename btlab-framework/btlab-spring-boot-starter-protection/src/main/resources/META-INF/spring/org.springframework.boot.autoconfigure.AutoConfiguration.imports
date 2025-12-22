@@ -1,4 +1,0 @@
-com.btlab.devops.framework.idempotent.config.BtlabIdempotentConfiguration
-com.btlab.devops.framework.lock4j.config.BtlabLock4jConfiguration
-com.btlab.devops.framework.ratelimiter.config.BtlabRateLimiterConfiguration
-com.btlab.devops.framework.signature.config.BtlabApiSignatureAutoConfiguration

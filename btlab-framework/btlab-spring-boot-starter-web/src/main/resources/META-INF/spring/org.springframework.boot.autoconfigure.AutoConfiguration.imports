@@ -1,6 +1,0 @@
-com.btlab.devops.framework.apilog.config.BtlabApiLogAutoConfiguration
-com.btlab.devops.framework.jackson.config.BtlabJacksonAutoConfiguration
-com.btlab.devops.framework.swagger.config.BtlabSwaggerAutoConfiguration
-com.btlab.devops.framework.web.config.BtlabWebAutoConfiguration
-com.btlab.devops.framework.apilog.config.BtlabApiLogRpcAutoConfiguration
-com.btlab.devops.framework.banner.config.BtlabBannerAutoConfiguration

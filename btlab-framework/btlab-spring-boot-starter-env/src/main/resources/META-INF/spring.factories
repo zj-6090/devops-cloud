@@ -1,2 +1,0 @@
-org.springframework.boot.env.EnvironmentPostProcessor=\
-    com.btlab.devops.framework.env.config.EnvEnvironmentPostProcessor

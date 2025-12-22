@@ -1,0 +1,3 @@
+com.bethlabs.framework.security.config.BethlabsSecurityAutoConfiguration
+com.bethlabs.framework.security.config.BethlabsWebSecurityConfigurerAdapter
+com.bethlabs.framework.operatelog.config.BethlabsOperateLogConfiguration

@@ -1,0 +1,3 @@
+com.bethlabs.framework.mq.redis.config.BethlabsRedisMQProducerAutoConfiguration
+com.bethlabs.framework.mq.redis.config.BethlabsRedisMQConsumerAutoConfiguration
+com.bethlabs.framework.mq.rabbitmq.config.BethlabsRabbitMQAutoConfiguration

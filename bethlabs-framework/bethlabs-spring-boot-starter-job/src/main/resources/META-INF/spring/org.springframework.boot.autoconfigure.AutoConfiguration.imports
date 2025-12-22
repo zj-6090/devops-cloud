@@ -1,0 +1,2 @@
+com.bethlabs.framework.quartz.config.BethlabsQuartzAutoConfiguration
+com.bethlabs.framework.quartz.config.BethlabsAsyncAutoConfiguration

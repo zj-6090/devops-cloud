@@ -1,0 +1,6 @@
+com.bethlabs.framework.apilog.config.BethlabsApiLogAutoConfiguration
+com.bethlabs.framework.jackson.config.BethlabsJacksonAutoConfiguration
+com.bethlabs.framework.swagger.config.BethlabsSwaggerAutoConfiguration
+com.bethlabs.framework.web.config.BethlabsWebAutoConfiguration
+com.bethlabs.framework.xss.config.BethlabsXssAutoConfiguration
+com.bethlabs.framework.banner.config.BethlabsBannerAutoConfiguration

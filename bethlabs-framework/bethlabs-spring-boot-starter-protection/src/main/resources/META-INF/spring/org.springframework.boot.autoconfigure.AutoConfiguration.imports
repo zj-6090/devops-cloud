@@ -1,0 +1,4 @@
+com.bethlabs.framework.idempotent.config.BethlabsIdempotentConfiguration
+com.bethlabs.framework.lock4j.config.BethlabsLock4jConfiguration
+com.bethlabs.framework.ratelimiter.config.BethlabsRateLimiterConfiguration
+com.bethlabs.framework.signature.config.BethlabsApiSignatureAutoConfiguration

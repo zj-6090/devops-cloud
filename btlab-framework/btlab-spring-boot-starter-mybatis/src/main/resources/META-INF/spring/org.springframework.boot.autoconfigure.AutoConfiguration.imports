@@ -1,3 +1,0 @@
-com.btlab.devops.framework.datasource.config.BtlabDataSourceAutoConfiguration
-com.btlab.devops.framework.mybatis.config.BtlabMybatisAutoConfiguration
-com.btlab.devops.framework.translate.config.BtlabTranslateAutoConfiguration

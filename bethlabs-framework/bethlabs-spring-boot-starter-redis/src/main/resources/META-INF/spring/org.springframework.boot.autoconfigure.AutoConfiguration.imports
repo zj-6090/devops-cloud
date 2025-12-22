@@ -1,0 +1,2 @@
+com.bethlabs.framework.redis.config.BethlabsRedisAutoConfiguration
+com.bethlabs.framework.redis.config.BethlabsCacheAutoConfiguration

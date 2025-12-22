@@ -1,0 +1,2 @@
+com.bethlabs.framework.tracer.config.BethlabsTracerAutoConfiguration
+com.bethlabs.framework.tracer.config.BethlabsMetricsAutoConfiguration
